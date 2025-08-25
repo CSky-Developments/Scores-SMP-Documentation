@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scores SMP - Plugin Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --bg-color: #000000;
+            --primary-color: #0a0a0a;
+            --secondary-color: #141414;
+            --accent-color: #ffffff;
+            --accent-hover: #e6e6e6;
+            --text-color: #f2f2f2;
+            --heading-color: #ffffff;
+            --border-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .docs-wrapper {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color: var(--primary-color);
+            border-right: 1px solid var(--border-color);
+            padding: 30px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            color: var(--heading-color);
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .sidebar li a:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        .content-area {
+            padding: 2rem 4rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .plugin-title h1 {
+            color: var(--heading-color);
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .developer-credit {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .csky-logo {
+            width: 35px;
+            height: 35px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            border-color: var(--secondary-color);
+        }
+
+        h2,
+        h3,
+        h4 {
+            color: var(--heading-color);
+            font-weight: 700;
+            margin-top: 2em;
+            margin-bottom: 0.8em;
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            padding-bottom: 0.5em;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h3 {
+            font-size: 1.6em;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            border-bottom: none;
+            margin-top: 2.5em;
+        }
+
+        h4 img.smilie {
+            width: 28px;
+            height: 28px;
+            vertical-align: -5px;
+            margin-right: 8px;
+        }
+
+        p,
+        li {
+            color: var(--text-color);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        b,
+        strong {
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 3em 0;
+        }
+
+        img.bbImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid var(--secondary-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        /* --- STYLES FOR THE HIGHLIGHTED EMBED BOX --- */
+        .embed-notice {
+            background-color: var(--secondary-color);
+            border-left: 5px solid var(--accent-color);
+            padding: 20px 25px;
+            margin-top: 2.5em;
+            margin-bottom: 2.5em;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .embed-notice h3, .embed-notice h4 {
+            margin-top: 0.5em;
+            font-size: 1.4em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+        
+        .embed-notice h4 {
+            font-size: 1.2em;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 1.5em;
+        }
+
+        .embed-notice h3:first-child {
+            margin-top: 0;
+        }
+        
+        .embed-notice p, .embed-notice li {
+            opacity: 0.9;
+        }
+        /* --- END OF EMBED BOX STYLES --- */
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px 20px;
+            font-size: 0.9em;
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .docs-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .content-area {
+                padding: 1.5rem 2rem;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="docs-wrapper">
+        <nav class="sidebar">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#why-scores-smp">Why ScoresSMP?</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#the-scores">The Scores</a></li>
+                <li><a href="#honor-score">The Honor Score</a></li>
+                <li><a href="#licensing">Licensing & Policy</a></li>
+                <li><a href="#installation">Installation</a></li>
+            </ul>
+        </nav>
+
+        <main class="content-area">
+            <header class="header">
+                <div class="plugin-title">
+                    <h1>Scores SMP</h1>
+                    <div class="developer-credit">
+                        <img src="https://cdn.discordapp.com/attachments/1112390125276631080/1112442565766168808/CSkyDevelopements.png?ex=68ad4f9f&is=68abfe1f&hm=debdb2ec21a2baab22cc5fb740af3859aed994f57b699a64259f83c8067724ee&" alt="CSky Developments Logo" class="csky-logo" />
+                        <span>Developed by <strong>CSky Developments</strong></span>
+                    </div>
+
+                </div>
+                <div class="header-buttons">
+                    <a href="https://discord.gg/FxxMEaaZJj" target="_blank" class="btn btn-secondary">Join CSky
+                        Development's Discord</a>
+                    <a href="https://discord.gg/FxxMEaaZJj" target="_blank" class="btn btn-primary">License Now</a>
+                </div>
+            </header>
+
+            <div class="bbWrapper">
+
+                <h2 id="introduction">ScoresSMP - A new unique gameplay for Minecraft SMP with custom items with custom abilities!</h2>
+                <p>ScoresSMP is a plugin that adds special, powerful items to your server called "Scores." Players can find, craft, and level up these items to get amazing new abilities.</p>
+                <p>This plugin makes playing on your server more fun and gives players exciting goals. They will want to explore the world, fight bosses, and become stronger. It's the best way to keep players coming back every day!</p>
+
+                <img src="https://builtbybit.com/attachments/cover-png.1018505/?variant=display" class="bbImage" alt="Cover Image for ScoresSMP">
+
+                <h3 id="why-scores-smp">Why You Should Get ScoresSMP</h3>
+                <ul>
+                    <li><b>Keeps Players Online:</b> This plugin gives your players a long-term goal. They will spend many hours trying to find and upgrade all the Scores.</li>
+                    <li><b>Fun for Everyone:</b> It doesn't matter if your players like to mine, fight monsters, or battle other players. There is a Score for every type of player.</li>
+                    <li><b>Make Your Server Special:</b> Most servers don't have items like these. ScoresSMP will make your server unique and more exciting than others.</li>
+                    <li><b>Looks Amazing:</b> Each Score has its own special look (a custom texture). When a player levels up a Score, its appearance changes to look even cooler!</li>
+                </ul>
+
+                <h2 id="how-it-works">How It Works for Players (The Adventure!)</h2>
+                <p>The journey to become powerful is simple and fun.</p>
+                <ol>
+                    <li>
+                        <b>Find a Template:</b> First, a player must find a "Score Template." These are rare items found in treasure chests around the world or from killing certain monsters.
+                        <img src="https://builtbybit.com/attachments/step-1-gif.1018603/?variant=display" class="bbImage" alt="Step 1: Find a Template">
+                    </li>
+                    <li>
+                        <b>Craft the Score:</b> Next, the player uses the template in a special crafting recipe with other rare materials. This creates the Level 1 Score.
+                        <img src="https://builtbybit.com/attachments/step-2-gif.1018604/?variant=display" class="bbImage" alt="Step 2: Craft the Score">
+                    </li>
+                    <li>
+                        <b>Level It Up:</b> The new Score has special abilities, but they are weak at first. The item's description tells the player what challenges they need to complete (like "kill 10 zombies" or "mine 50 diamonds").
+                        <img src="https://builtbybit.com/attachments/step-3-gif.1018605/?variant=display" class="bbImage" alt="Step 3: Level Up">
+                    </li>
+                    <li>
+                        <b>Become Powerful:</b> When a player completes the challenges, the Score levels up! It goes from Level 1, to Level 2, and finally to Level 3. With each level, the item looks cooler and its abilities become much stronger.
+                        <img src="https://builtbybit.com/attachments/step-4-gif.1018607/?variant=display" class="bbImage" alt="Step 4: Become Powerful">
+                    </li>
+                </ol>
+
+                <h2 id="the-scores">The Special Items: The Six Scores &amp; Their Abilities</h2>
+                <p>Here are the six main Scores your players can find and master.</p>
+
+                <h4><img class="smilie" alt="🔥" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/1f525.png"> The Fire Score</h4>
+                <p>This Score uses the power of the Nether. It is perfect for players who love fire and explosions.</p>
+                <img src="https://builtbybit.com/attachments/fire-score-gif.1018635/?variant=display" class="bbImage" alt="Fire Score">
+                <b>How to Obtain the Template:</b>
+                <ul>
+                    <li><b>Loot Nether Chests:</b> Search inside chests in <b>Nether Fortresses</b>, <b>Bastion Remnants</b>, and at <b>Ruined Portals</b> (20% chance).</li>
+                    <li><b>Hunt Nether Creatures:</b> Defeat mobs like <b>Blazes, Ghasts, Magma Cubes, and Piglins</b> (5% chance).</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/fire_score-png.1018638/?variant=display" class="bbImage" alt="Fire Score Crafting Recipe">
+                <b>Special Abilities:</b>
+                <ul>
+                    <li><b>Fire Resistance (Left-Click):</b> Makes you unable to be hurt by fire or lava for a short time.</li>
+                    <li><b>Fireball (Right-Click):</b> Lets you shoot a big, exploding fireball, just like a Ghast!</li>
+                    <img src="https://builtbybit.com/attachments/fireball-gif.1018650/?variant=display" class="bbImage" alt="Fireball Ability">
+                    <li><b>Ignite (Shift-Click):</b> Creates a circle of fire around you, setting all nearby enemies on fire.</li>
+                    <img src="https://builtbybit.com/attachments/ignite-gif.1018663/?variant=display" class="bbImage" alt="Ignite Ability">
+                </ul>
+
+                <h4><img class="smilie" alt="💧" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/1f4a7.png"> The Water Score</h4>
+                <p>This Score uses the power of the ocean. It is great for exploring underwater.</p>
+                <img src="https://builtbybit.com/attachments/water-score-gif.1018673/?variant=display" class="bbImage" alt="Water Score">
+                <b>How to Obtain the Template:</b>
+                <ul>
+                    <li><b>Search for Buried Treasure:</b> A template is <b>guaranteed</b> to be inside every <b>Buried Treasure</b> chest!</li>
+                    <li><b>Explore Sunken Ships:</b> Search chests inside <b>Shipwrecks</b> (25% chance).</li>
+                    <li><b>Fight Ocean Mobs:</b> Drops from <b>Guardians</b> (25% chance), <b>Elder Guardians</b> (10% chance), and <b>Drowned</b> (5% chance).</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/water_score-png.1018674/?variant=display" class="bbImage" alt="Water Score Crafting Recipe">
+                <b>Special Abilities:</b>
+                <ul>
+                    <li><b>Breathing (Left-Click):</b> Lets you breathe underwater for a long time.</li>
+                    <li><b>Dolphin's Grace (Right-Click):</b> Gives you a super-fast swimming speed.</li>
+                    <li><b>Water Shield (Shift-Click):</b> Creates a beautiful bubble of water around you. Nothing outside the bubble can hurt you!</li>
+                    <img src="https://builtbybit.com/attachments/water-shield-gif.1018686/?variant=display" class="bbImage" alt="Water Shield Ability">
+                </ul>
+                <h4><img class="smilie" alt="⛏️" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/26cf.png"> The Mine Score</h4>
+                <p>This Score is for players who love to dig and find treasure.</p>
+                <img src="https://builtbybit.com/attachments/mine-score-gif.1018721/?variant=display" class="bbImage" alt="Mine Score">
+                <b>How to Obtain the Template:</b>
+                <ul>
+                    <li><b>Loot Dungeons and Mines:</b> Search chests in <b>Abandoned Mineshafts</b> and <b>Dungeons</b> (20% chance).</li>
+                    <li><b>Mine Rare Ores:</b> Has a small chance to drop from mining <b>Ancient Debris</b> (5% chance) and <b>Diamond Ore</b> (1% chance).</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/mine_score-png.1018691/?variant=display" class="bbImage" alt="Mine Score Crafting Recipe">
+                <b>Special Abilities:</b>
+                <ul>
+                    <li><b>Haste (Left-Click):</b> Lets you mine blocks almost instantly.</li>
+                    <li><b>Cannon (Right-Click):</b> Lets you shoot a TNT block that flies through the air before exploding.</li>
+                    <img src="https://builtbybit.com/attachments/cannon-gif.1018736/?variant=display" class="bbImage" alt="Cannon Ability">
+                    <li><b>Blast (Shift-Click):</b> Creates a safe explosion around you that hurts monsters but doesn't hurt you or break blocks.</li>
+                    <img src="https://builtbybit.com/attachments/blast-gif.1018740/?variant=display" class="bbImage" alt="Blast Ability">
+                </ul>
+                
+                <h4><img class="smilie" alt="🐉" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/1f409.png"> The Dragon Score</h4>
+                <p>This Score uses the magical power of The End and the Ender Dragon.</p>
+                <img src="https://builtbybit.com/attachments/dragon-score-gif.1018752/?variant=display" class="bbImage" alt="Dragon Score">
+                <b>How to Obtain the Template:</b>
+                <ul>
+                    <li><b>Kill the Ender Dragon:</b> The <b>Ender Dragon</b> has a 50% chance to drop a template.</li>
+                    <li><b>Loot End Cities:</b> Search chests in <b>End Cities</b> (20% chance).</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/dragon_score-png.1018696/?variant=display" class="bbImage" alt="Dragon Score Crafting Recipe">
+                <b>Special Abilities:</b>
+                <ul>
+                    <li><b>Flight (Left-Click):</b> Gives you the ability to fly like you are in creative mode for a limited time.</li>
+                     <img src="https://builtbybit.com/attachments/flight-gif.1018802/?variant=display" class="bbImage" alt="Flight Ability">
+                    <li><b>Dragon's Breath (Right-Click):</b> Shoots a ball of dragon's breath that leaves a damaging magic cloud on the ground.</li>
+                    <img src="https://builtbybit.com/attachments/dragon-ball-gif.1018777/?variant=display" class="bbImage" alt="Dragon Breath Ability">
+                    <li><b>Ground (Shift-Click):</b> Traps your enemies by teleporting them deep into the ground.</li>
+                </ul>
+
+                <h4><img class="smilie" alt="⚔️" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/2694.png"> The PvP Score</h4>
+                <p>This Score is for players who love to fight other players and be the strongest warrior.</p>
+                <img src="https://builtbybit.com/attachments/pvp-score-gif.1018790/?variant=display" class="bbImage" alt="PvP Score">
+                <b>How to Obtain the Template:</b>
+                <ul>
+                    <li>There is a 5% chance this template will drop when you kill another player.</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/pvp_score-png.1018698/?variant=display" class="bbImage" alt="PvP Score Crafting Recipe">
+                <b>Special Abilities:</b>
+                <ul>
+                    <li><b>Strength (Left-Click):</b> Gives you a temporary boost of attack damage.</li>
+                    <li><b>Giant Sword (Right-Click):</b> Summons a huge sword from the sky to crash down on your enemies, sending them flying.</li>
+                    <img src="https://builtbybit.com/attachments/sword-gif.1018791/?variant=display" class="bbImage" alt="Giant Sword Ability">
+                    <li><b>Minions (Shift-Click):</b> Summons small, armored zombie friends who fight for you.</li>
+                    <img src="https://builtbybit.com/attachments/minions-gif.1018792/?variant=display" class="bbImage" alt="Minions Ability">
+                </ul>
+
+                <h4><img class="smilie" alt="🧞" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/1f9de-2642.png"> The Warden Score</h4>
+                <p>This Score uses the scary power of the Deep Dark and the Warden.</p>
+                <img src="https://builtbybit.com/attachments/warden-score-gif.1018803/?variant=display" class="bbImage" alt="Warden Score">
+                <b>How to Obtain the Template:</b>
+                <ul>
+                    <li>Defeating the <b>Warden</b> has a 50% chance to drop a template.</li>
+                    <li>Search chests in <b>Ancient Cities</b> (20% chance).</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/warden_score-png.1018699/?variant=display" class="bbImage" alt="Warden Score Crafting Recipe">
+                <b>Special Abilities:</b>
+                <ul>
+                    <li><b>Regeneration (Left-Click):</b> Heals your health very quickly.</li>
+                    <li><b>Sonic Boom (Right-Click):</b> Shoots a sonic blast that can't be blocked by armor, just like the Warden.</li>
+                    <li><b>Heart (Shift-Click):</b> Gives you extra temporary hearts (absorption hearts) for protection.</li>
+                </ul>
+
+                <h2 id="honor-score"><img class="smilie" alt="⭐" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/2b50.png"> The Honor Score - The Ultimate Item!</h2>
+                <p>When a player has mastered all six Scores, they can create the final, most powerful item in the game.</p>
+                <img src="https://builtbybit.com/attachments/honor-score-gif.1018747/?variant=display" class="bbImage" alt="Honor Score">
+                <b>How to Obtain It:</b>
+                <ul>
+                    <li>The Honor Score is special. <b>It does not have a template to find.</b></li>
+                    <li>It can <b>only be crafted</b> after you have mastered all six other scores.</li>
+                </ul>
+                <b>How to Craft It:</b>
+                <img src="https://builtbybit.com/attachments/honor_score-png.1018598/?variant=display" class="bbImage" alt="Honor Score Crafting Recipe">
+                <b>Aura of Power:</b>
+                <p>When a player holds the Honor Score, the other six scores will magically float and spin around them! It looks amazing and shows everyone that this player is a true master.</p>
+                <img src="https://builtbybit.com/attachments/honor-score-gif.1018600/?variant=display" class="bbImage" alt="Honor Score Crafting Recipe">
+                <b>The Strongest Abilities:</b>
+                <ul>
+                    <li><b>Buff (Left-Click):</b> Gives you many good effects at once: Speed, Strength, Regeneration, and more.</li>
+                    <li><b>Swarm (Right-Click):</b> Shoots many magic arrows that automatically chase and attack your enemies with different evil effects.</li>
+                    <li><b>Shamak (Shift-Click):</b> The ultimate attack! Creates a huge blast of dark magic that badly hurts all nearby enemies and makes the world dark and stormy for a moment.</li>
+                </ul>
+
+                <h2 id="installation">How to Install & Get Your License Key</h2>
+                <p>This is a premium plugin. You will need a license key to use it. The setup is easy!</p>
+                <ol>
+                    <li><b>Put the ScoresSMP.jar file into your server's plugins folder.</b></li>
+                    <li><b>Start your server one time.</b> It will make a new folder. Open the <code>config.yml</code> file inside and change <code>Terms: false</code> to <code>Terms: true</code>.</li>
+                    <li><b>Start the server again.</b> Look in the server console. It will show you your <b>Server IP, Port, and World UUID</b>. Copy this information.</li>
+                    <li><b>Join our Discord server and ask for a license.</b> Give us the server info you copied. You can join here: <a href="https://discord.gg/FxxMEaaZJj" target="_blank">https://discord.gg/FxxMEaaZJj</a></li>
+                    <li><b>We will give you a file called <code>license.key</code>.</b> Put this file into the <code>/plugins/ScoresSMP/</code> folder.</li>
+                    <li><b>Restart your server one last time.</b> The plugin will now be fully working. Enjoy!</li>
+                </ol>
+
+                <div id="licensing" class="embed-notice">
+                    <h3><img class="smilie" alt="❗" src="https://cdn.jsdelivr.net/joypixels/assets/6.5/png/unicode/64/2757.png"> Important Information & Policy</h3>
+                    <p>Please read this before you buy the plugin.</p>
+                    <ul>
+                        <li><b>Paid Plugin:</b> This is a premium resource, which means it costs money. This helps support me so I can continue to update the plugin.</li>
+                        <li><b>License Key:</b> To use the plugin, you need a license key. The key only works for one server. You will get your key from our Discord after you buy the plugin.</li>
+                        <li><b>Resource Pack is Required:</b> This plugin uses custom item looks (textures). You must use a resource pack to see them. A resource pack that has all the item textures is included with your purchase!</li>
+                        <li><b>Minecraft Version:</b> This plugin is made for Minecraft 1.21 and newer versions. It is not supported on older versions of the game.</li>
+                        <li><b>Getting Help:</b> If you find a bug or need help, please join our Discord. Do not ask for help in the review section.</li>
+                        <li><b>Rules of Use:</b> When you buy the plugin, you agree not to share the file with anyone else. You also agree not to try and edit the code. All sales are final.</li>
+                    </ul>
+                    <h4>License Revocation Policy</h4>
+                    <p>The license will be revoked if the <b>World UUID</b> or <b>Server IP/Port</b> changes. To prevent this, please open a ticket on our Discord before making these changes to receive an updated license.</p>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p>&copy; ScoresSMP | Developed by CSky Developments</p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+
+</html>
