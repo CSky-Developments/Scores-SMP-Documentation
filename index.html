@@ -201,8 +201,8 @@
         }
 
         h5 img.smilie {
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             vertical-align: -5px;
             margin-right: 8px;
         }
@@ -255,7 +255,6 @@
             box-shadow: 0 4px 10px var(--shadow-color);
         }
 
-        /* --- STYLES FOR THE HIGHLIGHTED EMBED BOX --- */
         .embed-notice {
             background-color: var(--secondary-color);
             border-left: 5px solid var(--accent-color);
@@ -288,7 +287,6 @@
         .embed-notice p, .embed-notice li {
             opacity: 0.9;
         }
-        /* --- END OF EMBED BOX STYLES --- */
 
         .footer {
             text-align: center;
@@ -356,7 +354,6 @@
             </header>
 
             <div class="bbWrapper">
-
                 <h2 id="introduction">ScoresSMP - A new unique gameplay for Minecraft SMP with custom items with custom abilities!</h2>
                 <p>ScoresSMP is a plugin that adds special, powerful items to your server called "Scores." Players can find, craft, and level up these items to get amazing new abilities.</p>
                 <p>This plugin makes playing on your server more fun and gives players exciting goals. They will want to explore the world, fight bosses, and become stronger. It's the best way to keep players coming back every day!</p>
@@ -432,7 +429,7 @@
                     <li><b>Water Shield (Shift-Click):</b> Creates a beautiful bubble of water around you. Nothing outside the bubble can hurt you!</li>
                     <img src="https://media.discordapp.net/attachments/1111724820086915158/1450553967959347290/Water_Shield.gif?ex=6942f527&is=6941a3a7&hm=e482c2e59d831cbe2340db4bdc15fea8e817826a215e6fef74245c2ee8601669&=&width=750&height=280" class="bbImage" alt="Water Shield Ability">
                 </ul>
-                <h4><img class="smilie" alt="⛏️" src="https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493c7200e68bffc80ecbf734b83ecf484f75f38db38bd88adf0b679ef9603a373c8e5f76669599cee9818b96025c58424d03c9c25d14ec72c95af33b452c0fd77f1"> The Mine Score</h4>
+                <h4><img class="smilie" alt="⛏" src="https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493c7200e68bffc80ecbf734b83ecf484f75f38db38bd88adf0b679ef9603a373c8e5f76669599cee9818b96025c58424d03c9c25d14ec72c95af33b452c0fd77f1"> The Mine Score</h4>
                 <p>This Score is for players who love to dig and find treasure.</p>
                 <img src="https://previews.jumpshare.com/gif/815bc01b796dd6f1733c957c5af19493bf08087f7af5f3d17c63a22dacbf2a40dcb5682a3ad029325ee9693cd210f6f3bbb8f28a7e8b28ab5164540016c6b020cc9f98b3a80dde24317df0cdb4f6a40a" class="bbImage" alt="Mine Score">
                 <b>How to Obtain the Template:</b>
@@ -470,7 +467,7 @@
                     <li><b>Ground (Shift-Click):</b> Traps your enemies by teleporting them deep into the ground.</li>
                 </ul>
 
-                <h4><img class="smilie" alt="⚔️" src="https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af194934a77ed3a4c7c8b98082a242519b47acae0fc8979886cb0b2de7ab6af678095dba74eaf508018fdd56e4eb72ba0a14e62147e58402d0487513ffddbf45e4b6227"> The PvP Score</h4>
+                <h4><img class="smilie" alt="⚔" src="https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af194934a77ed3a4c7c8b98082a242519b47acae0fc8979886cb0b2de7ab6af678095dba74eaf508018fdd56e4eb72ba0a14e62147e58402d0487513ffddbf45e4b6227"> The PvP Score</h4>
                 <p>This Score is for players who love to fight other players and be the strongest warrior.</p>
                 <img src="https://previews.jumpshare.com/gif/815bc01b796dd6f1733c957c5af19493866e6c7c466e4d9501a1ca442eb3542425c1108f86cb9eea7258c8808c77ee26b082ea94c6f2239d7ca2dba59d8845cf0cd3ac09370a98ef49d956d706efcb1d" class="bbImage" alt="PvP Score">
                 <b>How to Obtain the Template:</b>
@@ -563,10 +560,6 @@
 </html>
 
 <script>
-    // Improve image loading performance for large external images
-    // - make content images load lazily
-    // - use async decoding where supported
-    // - set low fetch priority so non-critical images don't block the page
     document.addEventListener('DOMContentLoaded', function () {
         try {
             document.querySelectorAll('img.bbImage').forEach(function(img){
@@ -578,6 +571,6 @@
                 if (!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
                 if (!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
             });
-        } catch(e) { /* graceful fallback if older browser */ }
+        } catch(e) { }
     });
 </script>
