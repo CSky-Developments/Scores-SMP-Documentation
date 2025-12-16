@@ -494,7 +494,7 @@
                     <li><b>Heart (Shift-Click):</b> Gives you extra temporary hearts (absorption hearts) for protection.</li>
                 </ul>
 
-                <h2 id="honor-score"><img class="smilie" alt="⭐" src="https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493a75b9ea827a73833cb0ca9b3d6e636e1d5730464dea43ba2602a0ec1a5b33bc616ebbb42fbe484f3414c6a77abda60b64524c070c7b1d6fa28c4fc3e6bac68cd"> The Honor Score - The Ultimate Item!</h2>
+                <h4 id="honor-score"><img class="smilie" alt="⭐" src="https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af19493a75b9ea827a73833cb0ca9b3d6e636e1d5730464dea43ba2602a0ec1a5b33bc616ebbb42fbe484f3414c6a77abda60b64524c070c7b1d6fa28c4fc3e6bac68cd"> The Honor Score - The Ultimate Item!</h4>
                 <p>When a player has mastered all six Scores, they can create the final, most powerful item in the game.</p>
                 <img src="https://previews.jumpshare.com/gif/815bc01b796dd6f1733c957c5af19493e3fbbf0e39c8ef5469fc9e42a9a8fdda7111343fc32c0ae8e4764ec199d0df05149eddc6a1d5dd20f34bf1a132b3137dd66c181acec10fbdda3d3995e8d4016e" class="bbImage" alt="Honor Score">
                 <b>How to Obtain It:</b>
@@ -552,10 +552,6 @@
 </html>
 
 <script>
-    // Improve image loading performance for large external images
-    // - make content images load lazily
-    // - use async decoding where supported
-    // - set low fetch priority so non-critical images don't block the page
     document.addEventListener('DOMContentLoaded', function () {
         try {
             document.querySelectorAll('img.bbImage').forEach(function(img){
@@ -567,6 +563,6 @@
                 if (!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
                 if (!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
             });
-        } catch(e) { /* graceful fallback if older browser */ }
+        } catch(e) {  }
     });
 </script>
