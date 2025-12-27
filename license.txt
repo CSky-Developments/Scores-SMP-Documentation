@@ -1,0 +1,10 @@
+© 2025 CSky Developments.
+
+All rights reserved. This Plugin License Agreement ("Agreement") is made between CSky Developments, your premier
+destination for Minecraft server solutions, and the customer ("Licensee") who purchases a plugin developed by
+CSky Developments. This Agreement outlines the terms and conditions under which the Licensee may use and distribute
+the plugin. By purchasing and using the plugin, the Licensee acknowledges and agrees to comply with all terms and
+conditions set forth in this Agreement. Unauthorized use, reproduction, or distribution of the plugin is strictly
+prohibited and may result in legal action.
+
+CSky Developments retains all rights, title, and interest in the plugin, including all intellectual property rights.
